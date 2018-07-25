@@ -1,0 +1,458 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	font-size: 12px;
+	color: #6C6C6C;
+	text-decoration: none;
+}
+.active{
+	color: #f10180;
+}
+
+body{
+	font: 12px/1.5 tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,寰蒋闆呴粦,瀹嬩綋,sans-serif;
+	color: #333;
+}
+ul li{
+	list-style: none;
+	font-size: 12px;
+	color:  #6C6C6C;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+	
+.h_top{
+	position: relative;
+	z-index: 103;
+	height: 28px;
+	line-height: 26px;
+	background-color: #f5f5f5;
+	color: #777;
+}
+.h_head{
+	width: 990px;
+	margin: 0 auto;
+}
+.h_top>span{
+	margin-left: -500px;
+}
+.h_top span{
+	font-size: 13px;
+}
+.h_top .s1{
+	font-size: 13px;
+}
+.h_top_r >ul{
+	display: inline-block;
+}
+
+.h_top_r >ul >li{  
+	display: inline-block;
+	padding-right: 45px;
+	margin-right: -10px;
+	
+}
+.h_top_r >ul >li:nth-of-type(4) {
+	background-position-x:80px;
+	background: url(../img/t_arrow.gif)  50px 12px no-repeat;
+}
+.coll_bg a{
+	background-position-x:100px;
+}
+.h_top_r a:hover{
+	color: red;
+}
+.coll_bg:hover .coll_list{
+	display: block;
+}
+.coll_list{
+	display: none;
+	position: absolute;
+	z-index: 1;
+	border: 1px solid darkgray;
+	width: 60px;	
+	padding:5px;
+	background-color:white ;
+	
+}
+.coll_list ul li{
+	text-align: center;
+}
+
+.coll_bg{
+	position: relative;
+}
+
+header:after{
+	content: '';
+	display: block;
+	clear: both;
+	
+}
+/*****************鏄熸湡鍏�*/
+.h_bottom{
+	width:100%;
+	background-color: white;
+	height: 55px;
+	margin-top: 10px;
+}
+.h_bottom1{
+	margin: 0 auto;
+	width: 1200px;
+	height: 100px;
+}
+.h_bottom .logo p{
+	color: gray;
+	font-size:15px ;
+	margin-left: 105px;
+}
+.h_bottom .logo span{
+	font-size: 40px;
+	font-family: arial;
+	color: #f10180;
+	width: ;
+	/*margin-left: 30px;*/	
+}
+header{
+	border-bottom: 2px solid #f3168a;
+}
+/**************************璁㈠崟鍦板潃*************/
+.body{
+	width: 990px;
+	margin: 0 auto;
+	margin-top: 10px;
+	
+}
+.address h3{
+	border-bottom: 2px solid #f1f1f1;
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: 400;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+.address .address-detail p{
+	color: #F10180;
+	font-size: 15px;
+}
+/*.address .address-detail span{
+	color:  #333;
+	margin-left: 10px;
+	font-size: 12px;
+	font-weight: 500;
+}*/
+.address-list li{
+	position: relative;
+	line-height: 25px;
+	padding-left: 89px;
+	border: 1px solid #fff;
+}
+
+li.selected{
+	border-color: #f10180;
+    background-color: #fff0e8;
+    margin: 5px 0 7px;
+    line-height: 32px;
+    box-shadow: 5px 5px 0 #f3f3f3;
+}
+.addressBox input{
+	position: absolute;
+	left: 60px;
+	top: 10px;
+}
+li.selected .addressInfo .user-address{
+	font-size: 14px;
+	font-weight: 600;
+}
+.addressInfo .modify{
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+	margin-left: 10px;
+	color: #36c;
+	cursor: pointer;
+}
+.addressInfo .modify:hover{
+	color: #f10180;
+}
+/*******************鍟嗗搧********************/
+.order{
+	margin-top: 30px;
+}
+.order h3{
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: 400;
+	height: 25px;
+	margin-bottom: 10px;
+}
+.order-detail ul li{
+	display: inline-block;
+	/*padding-left: 100px;*/
+	width: 180px;
+	height: 24px;
+	line-height: 24px;	
+	text-align: center;
+}
+.order-detail-nav {
+	border-bottom:3px solid #b2d1ff;
+}
+.order-photo {
+	padding: 10px 0px 10px 0px;
+	width: 245px;
+	display: inline-block;
+	margin-right: 1px;
+	
+}
+.photo{
+	display: inline-block;
+	margin-right: 1px;
+	width: 50px;
+	height: 50px;
+}
+.order-detail-item{
+	border-bottom: 2px solid #b2d1ff;
+}
+.order-detail-item .order-photo img{
+	width: 50px;
+	height: 50px;
+}
+
+.describe{
+	display: inline-block;
+	margin-right: 1px;
+	padding-left: 10px;
+	vertical-align: top;
+}
+.info-cell{
+	display: inline-block;
+	color: #6c6c6c;
+	width: 150px;
+	vertical-align: top;
+	padding: 10px 0;
+	margin-right: 1px;
+}
+.order-price,.order-quantity{
+	width: 100px;
+	padding: 10px 0;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	color: #3c3c3c;
+}
+.order-quantity{
+	padding-left: 80px;
+}
+.order-pay{
+	padding: 10px 0;
+	width: 130px;
+	vertical-align: top;
+	text-align: right;
+	display: inline-block;
+	padding-left: 17px;
+}
+.total-price{
+	font-weight: 700;
+	color: #f10180;
+	padding-left: 10px;
+}
+/*****璁㈠崟搴曢儴*/
+.order-footer{
+	margin-top: 20px;
+	padding-top: 10px;
+	height: 50px;
+	/*border-top: 1px solid #b2d1ff;*/
+}
+.order-total{
+	float: right;
+	font-weight: 700;
+	height: 50px;
+}
+.shiping-hide{
+	display: none;
+}
+.ship-yen{
+	padding: 0 2px;
+	font-family: Arial !important;
+}
+.ship-price{
+	font-family: Arial;
+}
+.total-item{
+	margin-left: 30px;
+	font-size: 12px;
+}
+.pay-money{
+	color: #f10180;
+}
+/*鏈�鍚�*/
+.pay-info{
+	text-align: right;
+	margin-top: 15px;
+	width: 990px;
+	height: 90px;
+}
+.describe{
+	margin-top: 10px;
+}
+.pay-details{
+	display: inline-block;
+	border: 2px solid #f10180;
+}
+.pay-shadow{
+	border: 4px solid #fff0e8;
+	padding: 10px 10px 10px 20px;
+	width: 430px;
+	height: 80px;
+}
+.pay-yen{
+	font-size: 26px;
+	margin-right: 4px;
+	color: #999;	
+}
+.pay-price{
+	color:  #f10180;
+	font: 700 26px tahoma;
+}
+/*纭畾鍦板潃*/
+.confirmAdd{
+	line-height: 1.6;
+	margin-top: 10px;
+}
+.confirmAdd-title{
+	font-weight: 700;
+	color: #333;	
+}
+.confirmAdd-title span{
+	margin-left:20px;
+	padding:5px
+	font:12px/1.5 tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,寰蒋闆呴粦,瀹嬩綋,sans-serif;
+}
+.order-submit{
+	text-align: right;
+}
+.order-submit-box{
+	display: inline-block;
+	padding: 0 0 5px 5px;
+}
+.go-back{
+	color: #36c;
+	text-decoration: none;
+	margin-right: 50px;
+	line-height: 34px;
+}
+.go-back:hover{
+	color:#F10180;
+	cursor: pointer;
+}
+.go-btn{
+	display: inline-block;
+	width: 182px;
+	height: 39px;
+	position: relative;
+	vertical-align: middle;
+	line-height: 39px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	background: #f10180;
+	color: white;
+}
+/*******************************澧炲姞鍦板潃*/
+.address .add-address{
+	margin-top: 5px;
+}
+.add-address .newAddr{
+	margin-left: 90px;
+	background: url(../img/pay/add_address.png) -28px -70px no-repeat;
+	width: 90px;
+	height: 25px;
+	display: inline-block;
+	font-size: 0;
+	text-indent: -99px;
+	vertical-align: text-top;
+}
+.add-address .newAddr:hover{
+	cursor: pointer;
+}
+/**************************鍏叡閮ㄥ垎搴曢儴*/
+footer{
+	font: 13px/1.5 tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,寰蒋闆呴粦,瀹嬩綋,sans-serif;
+  	
+    line-height: 22px;
+ 	margin-top: 250px;
+}
+.foot_1{
+	width: 1200px;
+	margin: 0 auto;
+	border-bottom: 1px solid gainsboro;	
+}
+.foot_1 dl dt img{
+	vertical-align: middle;
+}
+.foot_1 dl dt span{
+	font-weight: 600;
+	margin-left: 20px;
+}
+.foot_1 dl{		
+	display: inline-block;
+	text-align: center;
+	width: 300px;
+	margin-left: 70px;
+	margin-bottom: 20px;
+	height: 150px;	
+}
+.foot_1 dl dt{		
+	text-align: center;
+	width: 300px;
+	margin-bottom: 30px;
+}
+ul li{
+	list-style: none;
+}
+.foot-nav{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 4px 0 4px;
+	margin-top: 20px;
+	/*margin-bottom: 50px;*/
+}
+.foot_2 {
+	
+	margin: 0 auto;
+	width: 1200px;
+	/*height: 100px;*/
+	/*text-align: center;*/
+}
+.foot_2 ul {
+	margin-left: 300px;
+}	
+.foot_2 ul li{
+	display: inlne-block;
+	float: left;
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+}
+.foot_2 ul li:nth-of-type(4){
+	width: 160px;
+}
+.foot_2:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.foot_2 p{
+	text-align: center;
+	font-size: 12px;
+	color: gray;
+}

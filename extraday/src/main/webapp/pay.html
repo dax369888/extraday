@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>订单结算页面</title>
+		<link rel="stylesheet" href="css/pay.css" />
+	</head>
+	<body>
+		<header>
+			<div class="h_top">
+				<div class="h_head">
+					<span>送至：南京</span>
+						<div class="h_top_r fr">	
+							<ul>
+								<li><span class="h_1">请    </span><a href="#" class="active">登陆</a></li>
+								<li><a href="#">免费注册</a></li>
+								<li><a href="#">我的订单</a></li>
+                                <li class="coll_bg">
+									<a href="#">我的特卖</a>
+									<div class="coll_list">
+										<ul>
+											<li>收藏宝贝</li>
+											<li>我的足迹</li>
+										</ul>
+									</div>								
+								</li>
+                               						
+								<li><a href="#">联系客服</a></li>														
+								<li><a href="#">购物车</a></li>
+							</ul>
+						</div>	
+				</div>	  		
+			</div>
+			<div class="h_bottom">
+				<div class="h_bottom1 ">
+					<div class="logo">
+						<p><span>星期八 </span>确认订单</p>
+					</div>								
+				</div>
+			</div>
+		</header>
+		<section>
+			<div class="body">
+				<div class="address">
+					<h3>确认收货地址</h3>
+					<div class="address-detail">
+						<!--<p>寄送至:
+							<span>江苏省 南京市 建邺区 莫愁湖街道 云锦路58号万达东坊</span><br />
+							<span>江苏省 南京市 建邺区 莫愁湖街道 云锦路58号万达东坊</span>
+						</p>-->
+						<p>寄送至:</p>
+						<ul class="address-list">
+							<li class="address-wrap selected">
+								<div class="addressBox">
+									<label class="addressInfo">
+										<input type="radio" checked="" name="address"/>
+										<span class="user-address">
+											江苏省 南京市 建邺区 莫愁湖街道 云锦路58号万达东坊(Bella 收) 13260907127
+										</span>
+										<a class="modify">修改本地址</a>
+									</label>								
+								</div>
+							</li>
+							<li class="address-wrap">
+								<div class="addressBox">
+									<label class="addressInfo">
+										<input type="radio" checked="" name="address"/>
+										<span class="user-address">
+											江苏省 南京市 雨花台区 小行路16号(Bella 收) 13260907127
+										</span>
+										
+									</label>								
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="add-address">
+						<a class="newAddr">使用新地址</a>
+					</div>
+				</div>
+				<div class="order">
+					<h3>确认订单信息</h3>
+					<div class="order-detail">
+						<div class="order-detail-nav">
+							<ul>
+								<li>宝贝</li>
+								<li>属性</li>
+								<li>单价</li>
+								<li>数量</li>
+								<li>合计</li>
+							</ul>
+						</div>
+						
+						<!--具体买的商品----------------------------->
+						<div class="order-detail-item">
+							<div class="order-photo ">
+								<div class="photo">
+									<a href="#">
+										<img src="img/clothes/E_13.jpg" />
+									</a>
+								</div>
+								<div class="describe info-title">
+									<a href="#">复古温柔风连衣裙 碎花雪纺</a>
+								</div>
+							</div>
+							<div class="info-cell">
+								<p>颜色分类：米底红花</p>
+								<p>尺码：M</p>
+							</div>					
+							<div class="order-price">149</div>
+							<div class="order-quantity">1</div>
+							<div class="order-pay">
+								<span class="total-price">149</span>
+							</div>						
+						</div>
+						
+						
+						<div class="order-footer">
+							<div class="order-total">
+								<span class="shipping-cost">运费：
+									<span class="shiping-hide">免运费</span>
+									<span class="shiping-pay">
+										<span class="ship-yen">￥</span>
+										<span class="ship-price">10</span>
+									</span>
+								</span>
+								<span class="total-item">本组商品金额：
+									<span class="pay-money">
+										<span class="ship-yen">￥</span>
+										<span class="ship-price">159</span>
+									</span>
+								</span>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="pay-info">
+					<div class="pay-details">
+						<div class="pay-shadow">
+							<div class="order-reaPay">
+								<span class="realPay-title">实付款：</span>
+								<span class="pay-yen">￥</span>
+								<span class="pay-price">149.00</span>
+							</div>
+							<div class="confirmAdd">
+								<div class="confirmAdd-addr">
+									<span class="confirmAdd-title">寄送至：
+										<span class="pro">江苏省</span>
+										<span class="city">南京市</span>
+										<span class="dist">建邺区</span>
+										<span class="town">莫愁湖街道</span>
+										<span class="street">万达东坊</span>
+									</span>
+								</div>
+								<div class="confirmAdd-user">
+									<span class="confirmAdd-title">收货人：
+										<span class="name">Bella</span>
+										<span class="phone">13260907127</span>										
+									</span>								
+								</div>
+							</div>
+							
+						</div>						
+					</div>
+					<div class="order-submit">
+						<div class="order-submit-box">
+						<a href="#" class="go-back">返回购物车</a>
+						<a href="#" class="go-btn">提交订单</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<footer>
+			<div class="foot_1">
+				<dl>
+					<dt><img src="img/A1.png"/><span>消费者保障</span></dt>
+						<dd>保障范围 退货退款流程 </dd>
+						<dd> 服务中心 更多特色服务</dd>					
+				</dl>
+				<dl>
+					<dt><img src="img/A2.png"/><span>新手指导</span></dt>
+						<dd> 新手专区 消费警示 交易安全 </dd>
+						<dd>24小时在线帮助 免费开店 </dd>					
+				</dl>
+				<dl>
+					<dt><img src="img/A3.png"/><span>支付方式</span></dt>
+						<dd>快捷支付 信用卡 </dd>
+						<dd>货到付款 </dd>		
+				</dl>			
+		    </div>
+		 	<div class="foot-nav">
+		 	  	<div class="foot_2">				
+					<ul>
+						<li><a href="#">关于我们</a> </li>
+						<li><a href="#">联系客服</a> </li>
+						<li><a href="#">合作伙伴</a> </li>
+						<li><a href="#">法律声明及隐私权政策</a> </li>
+						<li><a href="#">关于我们</a> </li>				
+					</ul>	
+					<br />
+					<p>© 2018 MyDay.com 版权所有</p>
+				</div>
+			</div> 
+		</footer>
+	</body>
+</html>

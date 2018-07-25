@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>注册页面</title><link rel="stylesheet" type="text/css" href="css/regist.css"/>
+		
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var sec = 60;
+			var timer;
+			function startTime(){
+				timer = setInterval(function(){
+					sec--;
+					document.getElementsByClassName("tableText")[0].innerHTML=sec+"s";
+					if(sec>0){
+						document.getElementsByClassName("tableText")[0].disabled="disabled";
+					}else{
+						clearInterval(timer);
+					}
+				},1000);
+			}
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<div class="h_logo">
+				<a href="#"><span>星期八</span></a>个人注册<br  />
+				<p>Extra Day</p>
+			</div>	
+		</header>
+		
+		<section>
+		<div class="b">
+			<div class="switch-login"><p>已注册可<a href="#">直接登陆</a></p></div>
+			<h2>会员注册</h2>
+			
+			<div class="control-group">
+					<div class="tableItem">
+						<input type="text" required placeholder="请输入手机号" />
+					</div>
+					<div class="input-tip">
+						<span class="text"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="clear">
+						<div class="tableItem d1">
+							<input type="text" required placeholder="请输入验证码" />
+						</div>
+						<a class="tableText fr" href="#" onclick="startTime()">获取验证码</a>
+					</div>
+					<div class="input-tip">
+						<span class="text"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="tableItem ">
+						<input type="password" required placeholder="密码" />
+					</div>
+					<div class="input-tip">
+						<span class="text"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="tableItem">
+						<input type="password" required placeholder="确认密码" />
+					</div>
+					<div class="input-tip">
+						<span class="text"></span>
+					</div>
+				</div>
+				<div class="xieYi">
+					<input type="checkbox"/> 我已阅读并接受以下条款：<a href="#">《星期八用户服务协议》</a>
+				</div>
+				<button class="tableBtn"><a href="#" >同意协议并注册</a></button>
+		</div>
+		</section>
+		<footer>
+			<div class="f">
+				
+				<ul>
+					<li><a href="#">关于我们</a> </li>
+					<li><a href="#">联系客服</a> </li>
+					<li><a href="#">合作伙伴</a> </li>
+					<li><a href="#">法律声明及隐私权政策</a> </li>
+					<li><a href="#">关于我们</a> </li>
+					
+				</ul>	
+				<br />
+				<p>© 2018 ExtraDay.com 版权所有</p>
+			</div>		
+		</footer>
+	</body>
+
+</html>

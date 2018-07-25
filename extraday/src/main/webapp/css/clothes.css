@@ -1,0 +1,402 @@
+
+a:hover{
+	text-decoration: underline;
+}
+/************************************头部*/
+a{
+	font-size: 12px;
+	color: #6C6C6C;
+	text-decoration: none;
+}
+.active{
+	color: #f10180;
+}
+
+body{
+	color: #3C3C3C
+}
+ul li{
+	list-style: none;
+	font-size: 12px;
+	color:  #6C6C6C;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+	
+.h_top{
+	position: relative;
+	z-index: 103;
+	height: 28px;
+	line-height: 26px;
+	background-color: #f5f5f5;
+	color: #777;
+}
+.h_head{
+	width: 1200px;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+}
+.h_top>span{
+	margin-left: -500px;
+}
+.h_top span{
+	font-size: 13px;
+}
+.h_top .s1{
+	font-size: 13px;
+}
+.h_top_r >ul{
+	display: inline-block;
+}
+
+.h_top_r >ul >li{  
+	display: inline-block;
+	padding-right: 45px;
+	margin-right: -10px;
+	
+}
+.h_top_r >ul >li:nth-of-type(4) {
+	background-position-x:80px;
+	background: url(../img/t_arrow.gif)  50px 12px no-repeat;
+}
+.coll_bg a{
+	background-position-x:100px;
+}
+.h_top_r a:hover{
+	color: red;
+}
+.coll_bg:hover .coll_list{
+	display: block;
+}
+.coll_list{
+	display: none;
+	position: absolute;
+	z-index: 1;
+	border: 1px solid darkgray;
+	width: 60px;	
+	padding:5px;
+	background-color:white ;
+	
+}
+.coll_list ul li{
+	text-align: center;
+}
+
+.coll_bg{
+	position: relative;
+}
+
+header:after{
+	content: '';
+	display: block;
+	clear: both;
+	
+}
+/*********************************搜索*/
+.h_bottom{
+	width:100%;
+	background-color: white;
+	height: 97px;
+	padding-top: 24px;
+}
+.h_bottom1{
+	margin: 0 auto;
+	width: 1200px;
+	height: 100px;
+}
+
+.h_bottom .logo span{
+	font-size: 40px;
+	font-family: arial;
+	color: #f10180;;
+		
+}
+.h_bottom .search{
+	margin-top: -40px;
+	margin-left: 470px;
+}
+.search form{	
+	font-size: 0;	
+}
+.search form input{
+	height: 40px;
+	border: 2px solid #f10180;;
+}
+.search form input[type=search]{
+	font-size: 14px;
+	text-indent: 15px;
+	width:600px;	
+	border-radius: 20px 0px 0px 20px;
+}
+.search form input[type=submit]{
+	color: white;
+	background-color: #f10180;;
+	font-size: 18px;
+	width:100px;	
+	border-radius: 0px 25px 25px 0px;
+	border-top-width:1px ;
+	border-bottom-width: 4px;
+}
+.search ul li a{
+	float: left;
+	margin-left: 20px;
+	padding-right: 20px;
+	font-size: 12px;
+	color: gray;
+}
+/******************************正文*/
+.sec_first #sec{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: white;
+	border-bottom: 2px solid #f10180;;
+}
+.sec_first #sec p {
+	width: 80px;
+	height: 40px;	
+	text-align: center;
+	line-height: 40px;
+	font-size: 18px;
+	margin-left: 140px;
+}
+.sec_first:hover  a{
+	color: white;
+}
+.sec_first:hover #sec p{
+	background-color: #f10180;
+}
+.sec_first #sec p:hover a{
+	color: white;	
+}
+.sec_first #sec a{
+	font-size: 18px;
+	font-weight: bolder;
+	
+}
+
+.sec_first{
+	position: relative;	
+}
+.sec_first .sec_list{
+	display: none;
+}
+.sec_first:hover  .sec_list{
+	display: block;
+	width: 100%;
+	height: 120px; 
+	background-color: #f10180;
+	position: absolute;/*整个div设置为absolute,这样才不占位置*/
+	z-index: 10;
+}
+.sec_first:hover .sec_list ul{
+	margin-left: 110px;	
+	z-index: 2;
+}
+.sec_first .sec_list ul li{
+	height: 30px;
+	line-height: 30px;
+}
+.sec_first:hover .sec_list ul li{
+	color: white;
+}
+.sec_first:hover .sec_list ul:hover {
+	background-color: #f10180;
+}
+.sec_list li a:hover{
+	text-decoration: underline;
+}
+.sec_first:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+section:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.left-bar>p>a{
+			font-size: 13px;
+			display: block;
+			width: 50px;
+			height: 30px;
+			line-height: 30px;
+			text-decoration: none;
+			text-align: center;
+			margin-top: 1px;
+			padding: 8px 5px;			
+			border-bottom: 1px solid #eaeaea;
+			color: #666;			
+}
+section >p>a:hover{
+		background-color: #f10180;
+		text-decoration: none;
+}
+.left-bar{
+	border: 1px solid #d6d6d6;
+    border-radius: 3px;
+	position: fixed;
+	bottom: 100px;
+	left: 90px;
+}
+.sec1 ul{
+	display: inline-block;
+}
+.sec_img{
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 0;
+	/*text-align: center;*/
+	/*border: 1px solid #f10180;;*/
+	
+}
+.sec_img img{
+	width: 224px;
+	height: 470px;
+}
+.sec_img ul:nth-of-type(1) {
+	position: relative;
+}
+.sec_img p{
+	position: absolute;
+	color:white ;
+	left: 50px;
+	top: 390px;
+	background-color: #f10180;
+	font-size: 20px;
+	height: 60px;
+	line-height: 60px;
+}
+.sec_sec{
+	margin-top: 50px;
+	width: 1200px;
+	/*border: 1px solid #f10180;;*/
+	margin: 0 auto;
+	height: 1500px;	
+} 
+.sec_sec dl img:hover{
+	border:1px solid #f10180;
+}
+.sec_sec p{
+	margin-top: 20px;
+	font-size: 20px;
+	color: black;
+	line-height: 50px;
+	height: 50px;
+}
+.sec_sec dl img{
+	width: 268px;
+	height: 260px;
+}
+.sec_sec dl{
+	width: 300px;
+	float: left;
+}
+.sec_sec .s1{
+	color: #f10180;;
+}
+#sec_img1 .s2{
+	color: gray;
+	text-decoration: line-through;
+}
+#sec_img1:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+#sec_img2:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+#sec_img3:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+#sec_img4:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/***************************底部*/
+footer{
+	font: 13px/1.5 tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,微软雅黑,宋体,sans-serif;
+    /*display: block;*/
+    /*clear: both;*/
+    line-height: 22px;
+  margin-top: 70px;
+}
+.foot_1{
+	width: 1200px;
+	margin: 0 auto;
+	border-bottom: 1px solid gainsboro;	
+}
+.foot_1 dl dt img{
+	vertical-align: middle;
+}
+.foot_1 dl dt span{
+	font-weight: 600;
+	margin-left: 20px;
+}
+.foot_1 dl{		
+	display: inline-block;
+	text-align: center;
+	width: 300px;
+	margin-left: 70px;
+	margin-bottom: 20px;
+	height: 150px;	
+}
+.foot_1 dl dt{		
+	text-align: center;
+	width: 300px;
+	margin-bottom: 30px;
+}
+ul li{
+	list-style: none;
+}
+.foot-nav{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 4px 0 4px;
+	margin-top: 20px;
+	/*margin-bottom: 50px;*/
+}
+.foot_2 {
+	
+	margin: 0 auto;
+	width: 1200px;
+	/*height: 100px;*/
+	/*text-align: center;*/
+}
+.foot_2 ul {
+	margin-left: 300px;
+}	
+.foot_2 ul li{
+	display: inlne-block;
+	float: left;
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+}
+.foot_2 ul li:nth-of-type(4){
+	width: 160px;
+}
+.foot_2:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.foot_2 p{
+	text-align: center;
+	font-size: 12px;
+	color: gray;
+}

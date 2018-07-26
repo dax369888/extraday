@@ -114,6 +114,13 @@ public class GoodService {
 		return lists;
 		
 	}
+
+	public Integer getSpuIdBySku(Integer sku_id) {
+		
+		SKU sku	=skudao.selectById(sku_id);
+		Integer spu_id=sku.getF_spu_id();
+		return spu_id;
+	}
 	
 	
 	

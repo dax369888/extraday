@@ -13,9 +13,11 @@ import com.ft.extraday.entity.Order;
 import com.ft.extraday.entity.OrderItem;
 import com.ft.extraday.entity.Users;
 import com.ft.extraday.service.OrderService;
+import com.ft.extraday.util.PageUtil;
 
 public class OrderController {
 	private OrderService orderService=new OrderService();
+	
 	
 	public void createOrder(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 		//创建订单
@@ -46,7 +48,9 @@ public class OrderController {
 			
 			
 			Integer res1=orderService.initOrder(orderItem);
-			
+			//加入订单之后减少库存	
+				
+				orderService.alterInventoryById(sku_id,good_count);
 				orderService.deleteCartItemBy(sku_id,user_id);
 		
 			
@@ -72,11 +76,15 @@ public class OrderController {
 	public void getOrder(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 		
 		Integer uid=Integer.valueOf(request.getParameter("userID"));
+			
 		System.out.println(uid);
+		String indexStr=request.getParameter("index");
+		Integer index=Integer.valueOf(indexStr);
+		
+		System.out.println(index);
 		Integer ostatus=Integer.valueOf(request.getParameter("ostatus"));
-		List<Map<String, Object>> orders=orderService.selectByOstatus(uid,ostatus);
+		PageUtil orders=orderService.selectByOstatus(uid,ostatus,index,3);
 		System.out.println(orders);
-		request.getSession().setAttribute("orders", orders);
 		response.getWriter().write(JSON.toJSONString(orders));
 		
 		

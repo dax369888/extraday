@@ -49,6 +49,9 @@
 
 					goodtitle = $($(".goods-title")[i]).find("a")
 					$(goodtitle).html(v["f_sku_name"]);
+										
+					$(goodtitle).attr("href","javascript:void(0)");
+					$(goodtitle).attr("onclick","getGoodsBySku("+v["f_sku_id"]+")");
 					price = $(".price")[i]
 					$(price).html("")
 					$(price).append("￥" + v["f_price"]);
@@ -70,6 +73,28 @@
 			},
 		})
 	}
+	
+	function getGoodsBySku(i){
+		alert(i)
+		$.ajax({
+			data:{
+				sku_id:i
+			},
+			dataType:"json",
+			type:"post",
+			url:"/extraday/goods/getGoodsBySku.do",
+			success:function(data){
+				alert(data);
+				window.location.href="goodsDetail.jsp?spu_id="+data;
+			}
+			
+			
+			
+		})
+		
+		
+	}
+	
 	
 	function createOrder(){
 		var skus=setSku();
@@ -258,7 +283,6 @@
 										<input class="J_inputCount" type="text" value="1" />
 										<span class="J_btnAddCount">+</span>
 									</div>-->
-									<div class="section3_2_6_2">限购6件</div>
 								</div>
 							</li>
 							<li class="section3_2_3">

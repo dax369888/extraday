@@ -30,8 +30,26 @@ public class OrderDAO extends BaseDAO<Order>{
 		
 	}
 
-	public List<Map<String, Object>> selectByOstatus(Integer uid, Integer ostatus) {
+	public List<Map<String, Object>> selectByOstatus(Integer uid, Integer ostatus, Integer index, Integer pageSize) {
 		String sql="select t_order.*,t_address.f_rec_name from t_order,t_address where t_order.f_user_id=? and t_order.f_address_id=t_address.f_addr_id";
+		int size=1;
+		if (ostatus!=-1) {
+			sql+=" and f_order_status=?";
+			size++;
+		}
+		sql+=" limit "+(index-1)*pageSize+","+pageSize+" order by t_order.f_order_id";
+		Object[] objects=new Object[size];
+		objects[0]=uid;
+		if (ostatus!=-1) {
+			objects[1]=ostatus;
+		}
+		System.out.println(sql);
+		return super.queryList(sql, objects);
+	}
+
+	public Integer getCount(Integer uid, Integer ostatus) {
+
+		String sql="select count(1) sum from t_order,t_address where t_order.f_user_id=? and t_order.f_address_id=t_address.f_addr_id";
 		int size=1;
 		if (ostatus!=-1) {
 			sql+=" and f_order_status=?";
@@ -43,7 +61,8 @@ public class OrderDAO extends BaseDAO<Order>{
 			objects[1]=ostatus;
 		}
 		System.out.println(sql);
-		return super.queryList(sql, objects);
+		return Integer.valueOf(super.queryList(sql, objects).get(0).get("sum").toString());
+		
 	}
 
 	

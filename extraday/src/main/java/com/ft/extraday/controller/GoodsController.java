@@ -101,6 +101,16 @@ public class GoodsController {
 		
 	}
 	
+
+	public void getGoodsBySku(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+		
+		Integer sku_id=Integer.valueOf(request.getParameter("sku_id"));
+		Integer spu_id=goodService.getSpuIdBySku(sku_id);
+		response.getWriter().write(JSON.toJSONString(spu_id));
+		
+	
+	}
+	
 	
 	
 	

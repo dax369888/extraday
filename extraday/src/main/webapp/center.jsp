@@ -53,7 +53,7 @@
 		$(".main-section-center").hide();
 		$(".main-section-personInfo").hide();
 		$(".main-section-address").hide();
-		initOrder(-1);
+		initOrder(-1,1);
 	}
 	function initPersonInfo() {
 		var userName = $(".input-1");
@@ -232,31 +232,29 @@
 		})
 	}
 
-	function initOrder(status) {
+	function initOrder(status,index) {
+		var ostatus=status;
+		var index=index;
 		var goods = $(".p-msg a");
 		var count = $(".goods-number");
-
 		var userid = ${user.f_user_id};
 
-		$
-				.ajax({
+		$.ajax({
 					type : "post",
 					data : {
-						userID : userid,
-						ostatus : status
+						index:index,
+						userID:userid,
+						ostatus:status
 					},
 					dataType : "json",
 					url : "/extraday/order/getOrder.do",
 					success : function(data) {
+					
 						var tbody = $(".mc tbody");
 						tbody.html("")
-						if(data==""){
-							tbody.append("还没有订单")							
-						}
-						$
-								.each(
-										data,
-										function(i, v) {
+						if(data["totalCount"]==0){tbody.append("还没有订单")}
+						
+						$.each(data["list"],function(i, v) {
 											var stat = "";
 											var operate = ""
 											if (v["f_order_status"] == 1) {
@@ -284,8 +282,11 @@
 											var tr1 = "<tr class='order-number'><td colspan='6'><span class='dealtime'></span><span class='number'>订单号：<a href='#'>"
 													+ v["f_order_id"]
 													+ "</a></span></td></tr>"
+											
+											
+											
 											var tr2 = "<tr class='order-information'>"
-													+ "<td class='goods'><div class='goods-item'><div class='p-img'><a href='#'><img src='img/order/order.webp.jpg' /></a></div><div class='p-msg'><a href='#'>梅子熟了 复古温柔风连衣裙 碎花雪纺初恋裙少女sukol2018夏新款</a></div></div><div class='goods-number'>x1</div></td>"
+													+ "<td class='goods'></td>"
 													+ "<td rowspan='1'><div><span>"
 													+ v["f_rec_name"]
 													+ "</span></div></td>"
@@ -302,8 +303,48 @@
 
 											tbody.append(tr1);
 											tbody.append(tr2);
+											
+											$.each(v["list"],function(index,sku){
+											
+												var td="<span>"+sku["f_sku_name"]+"</span>*<span>"+sku["f_good_count"]+"<span><br>"
+												var good=$(tbody).find(".goods").eq(i);
+												$(good).append(td)	
+												
+											})
+											
+											
+											
 										})
-
+								
+							if(data["totalCount"]!=0){	
+										
+							var page="";
+							if(data["index"]!=1){
+								var pageHead="<a href='javascript:void(0)' onclick='initOrder("+ostatus+","+1+")'>首页</a>";
+								var pageUp="<a href='javascript:void(0)' onclick='initOrder("+ostatus+","+(index-1)+")'>上一页</a>";
+							page+=pageHead;
+							page+=pageUp;
+							}
+						
+							for(var i=data["start"];i<=data["end"];i++){
+								var aPage="<a href='javascript:void(0)' onclick='initOrder("+ostatus+","+i+")'>"+i+"</a>"	
+								page+=aPage;	
+							}	
+							
+							if(data["index"]!=data["totalPage"]){
+								var pageDown="<a href='javascript:void(0)' onclick='initOrder("+ostatus+","+(index+1)+")'>下一页</a>";
+								var pageTail="<a href='javascript:void(0)' onclick='initOrder("+ostatus+","+data["totalPage"]+")'>末页</a>";
+							page+=pageDown;
+							page+=pageTail;
+							}
+							
+							
+							
+							var disTr="<tr><td colspan='6'>"+page+"</td></tr>";			
+							tbody.append(disTr);
+	
+							}
+							
 					},
 
 				})
@@ -594,10 +635,10 @@
 							<div class="main-section-order-2">
 								<div class="mt">
 									<ul>
-										<li><a href="javascript:void(0)" onclick="initOrder(-1)">全部订单</a></li>
-										<li><a href="javascript:void(0)" onclick="initOrder(1)">待付款</a></li>
-										<li><a href="javascript:void(0)" onclick="initOrder(2)">待收货</a></li>
-										<li><a href="javascript:void(0)" onclick="initOrder(3)">待评价</a></li>
+										<li><a href="javascript:void(0)" onclick="initOrder(-1,1)">全部订单</a></li>
+										<li><a href="javascript:void(0)" onclick="initOrder(1,1)">待付款</a></li>
+										<li><a href="javascript:void(0)" onclick="initOrder(2,1)">待收货</a></li>
+										<li><a href="javascript:void(0)" onclick="initOrder(3,1)">待评价</a></li>
 									</ul>
 									<!-- <div class="search">
 								<input id="ip_keyword" type="text" class="itxt" value="商品名称/商品编号/订单号">
@@ -673,6 +714,9 @@
 									</tr>
 									
 									</c:forEach> --%>
+									
+									
+									
 										</tbody>
 
 

@@ -54,6 +54,40 @@ public class SPUDAO extends BaseDAO<Spu>{
 		return Integer.valueOf((super.queryList(sql, objects)).get(0).get("sum").toString());
 		
 	}
+
+	public List<Map<String, Object>> getSpuBase(Integer cid, String str) {
+		String sql="select DISTINCT t_spu.* FROM t_spu,t_sku WHERE t_sku.f_spu_id=t_spu.f_id and"
+				+ " t_spu.f_category_id=? AND (f_good_detail LIKE CONCAT('%',?,'%') OR f_sku_name LIKE CONCAT('%',?,'%'))";
+		Object[] objects=new Object[] {cid,str,str};
+		return super.queryList(sql, objects);
+		
+	}
+
+	public List<Map<String, Object>> getBase(List<Object> lists, Object object) {
+		
+		String sql="select DISTINCT * from(select t_spu.*,t_spu_val.f_value_id FROM t_spu,t_spu_val"+
+				" WHERE t_spu.f_id=t_spu_val.f_spu_id UNION DISTINCT select t_spu.*,t_sku_val.f_value_id FROM t_spu,t_sku,t_sku_val"+
+				" WHERE t_spu.f_id=t_sku.f_spu_id AND t_sku.f_sku_id=t_sku_val.f_sku_id) search"+ 
+				" WHERE f_value_id=?";
+		System.out.println(sql);
+if (lists.size()!=0||lists!=null) {
+			
+			String str=" and f_id in(";
+			for (int i = 0; i < lists.size(); i++) {
+				str+=lists.get(i);
+				if (i!=lists.size()-1) {
+					str+=",";
+				}
+			}
+			str+=")";
+			sql+=str;
+		}
+		
+		Object[] objects=new Object[] {object};
+		return super.queryList(sql,objects);
+
+
+	}
 	
 
 	

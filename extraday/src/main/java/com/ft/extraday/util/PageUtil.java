@@ -11,6 +11,7 @@ public class PageUtil {
 	public Integer totalPage;
 	public Integer start;
 	public Integer end;
+	public Integer startIndex;
 	public List<Map<String, Object>> list;
 	public Integer getIndex() {
 		return index;
@@ -41,6 +42,15 @@ public class PageUtil {
 	}
 	public void setStart(Integer start) {
 		this.start = start;
+	}
+	
+	
+	
+	public Integer getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(Integer startIndex) {
+		this.startIndex = startIndex;
 	}
 	public Integer getEnd() {
 		return end;
@@ -79,6 +89,7 @@ public class PageUtil {
 		this.pageSize = pageSize;
 		this.totalCount = totalCount;
 		this.totalPage = (totalCount-1)/pageSize+1;
+		this.startIndex=(index-1)*pageSize;
 					this.start=1;
 					this.end=5;
 			         if(totalPage <=5){

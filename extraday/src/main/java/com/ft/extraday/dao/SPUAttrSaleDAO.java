@@ -41,7 +41,7 @@ public class SPUAttrSaleDAO extends BaseDAO<SPUSaleAttr>{
 		
 		
 	}
-	public List<Map<String, Object>> getValueByCid(Integer cid, Integer attrId, String string) {
+	public List<Map<String, Object>> getValueByCid(Integer cid, Integer attrId, String string, List<Object> list2) {
 		String sql="select DISTINCT t_attribute.*,t_vaule.f_value_name,t_vaule.f_value_id FROM t_c_att,t_spu,t_spu_val,t_vaule,t_attribute,t_sku,t_sku_val" 
 				+" WHERE t_c_att.f_category_id=? AND t_c_att.f_attr_id=?"
 				+" AND t_c_att.f_category_id=t_spu.f_category_id"
@@ -53,6 +53,20 @@ public class SPUAttrSaleDAO extends BaseDAO<SPUSaleAttr>{
 				+" AND t_sku.f_sku_id=t_sku_val.f_sku_id"
 				+" AND t_sku_val.f_value_id=t_vaule.f_value_id))"
 				+" and (f_good_detail LIKE CONCAT('%',?,'%') OR f_sku_name LIKE CONCAT('%',?,'%'))";
+		if (list2.size()!=0||list2!=null) {
+			
+			String str=" and t_spu.f_id in(";
+			for (int i = 0; i < list2.size(); i++) {
+				str+=list2.get(i);
+				if (i!=list2.size()-1) {
+					str+=",";
+				}
+			}
+			str+=")";
+			sql+=str;
+		}
+		
+		System.out.println(sql);
 		Object[] objects=new Object[] {cid,attrId,string,string};
 		return super.queryList(sql, objects);
 	}

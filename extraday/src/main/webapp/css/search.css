@@ -161,6 +161,13 @@ header:after{
 	height: 25px;
 	/*margin-left: 20px;*/
 }
+
+.nav-classify span{
+	
+	margin-left:10px; 
+	
+}
+
 .nav-classify .classify-show{
 	float: right;    
 	margin: 0 0 0 4px;
@@ -173,6 +180,8 @@ header:after{
     cursor: pointer;
     text-decoration: none;
 }
+
+
 .classify-text{
 	margin-top: 4px;
 	float: left;
@@ -225,7 +234,6 @@ header:after{
 }
 .rowBody a:hover{
 	color: #f10180;
-	cursor: pointer;
 }
 .rwo .foot{
 	position: absolute;

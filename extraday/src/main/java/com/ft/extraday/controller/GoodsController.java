@@ -113,8 +113,8 @@ public class GoodsController {
 	
 	}
 	
-
 	
+	//需要与getSpuCom整合，有大量冗余
 	public void searchByStr(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
 		request.setCharacterEncoding("UTF-8");
 		Map<String, Object> map=new HashMap<String, Object>();
@@ -134,7 +134,12 @@ public class GoodsController {
 			pageUtil=goodService.getSpuByCid(cid,index,5);
 		}
 		System.out.println(cid);
-		Map<String, Object> attrList=goodService.getAttrById(cid,string);
+		List<Object> list=new ArrayList<Object>();
+		for (int i = 0; i < pageUtil.list.size(); i++) {
+			list.add(pageUtil.list.get(i).get("f_id"));
+			}
+		System.out.println(list);
+		Map<String, Object> attrList=goodService.getAttrById(cid,string,list);
 		
 		map.put("attrList", attrList);
 		
@@ -149,4 +154,28 @@ public class GoodsController {
 		
 	}
 	
+	public void getSpuCom(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+		request.setCharacterEncoding("UTF-8");
+		Map<String, Object> map=new HashMap<String, Object>();
+		Integer cid=Integer.valueOf(request.getParameter("cid"));
+		String str=request.getParameter("str");
+		Integer index=Integer.valueOf(request.getParameter("index"));
+		Object[] valueID=request.getParameterValues("valueID");
+		
+		PageUtil pageUtil=goodService.getSpuBase(cid,str,valueID,index,5);
+		map.put("pageUtil", pageUtil);
+		
+		List<Object> list=new ArrayList<Object>();
+		for (int i = 0; i < pageUtil.list.size(); i++) {
+			list.add(pageUtil.list.get(i).get("f_id"));
+			}
+		System.out.println(list);
+		Map<String, Object> attrList=goodService.getAttrById(cid,str,list);
+		map.put("attrList", attrList);
+	
+		System.out.println(JSON.toJSONString(map));
+		response.getWriter().write(JSON.toJSONString(map));
+		
+		
+	}
 }

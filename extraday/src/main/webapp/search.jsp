@@ -39,6 +39,9 @@
 			success:function(data){
 				var pageSide=$(".page")
 				$(".page").html("")
+				
+				
+				
 				if(data["pageUtil"]["totalCount"]==0){
 					
 					$(".goods").html("<h1>您好，查不到您想要的商品</h1>");
@@ -73,6 +76,11 @@
 					$(".goods a:eq(0)").nextAll().remove();	
 				
 					$.each(data["pageUtil"]["list"],function(i,v){
+						if(i==0){
+						var cateId=$("input[type=hidden]");
+						$(cateId).val(v["f_category_id"]);						
+						}
+						
 						if(i>=1){
 							
 							var newData=$(".goods a:eq(0)").clone(true);
@@ -238,10 +246,152 @@
 		map.put(attrId,valueId);
 		mapShow.put(attrName,valueName);
 		alert(map);
-		alert(mapShow);
+		//前台显示Mapshow
+		var show=$(".nav-classify");
+		$(show).find("span:eq(0)").nextAll().remove();
+		
+		for(var k=0;k<mapShow.size();k++){
+			var kname="";
+				kname+= mapShow.keys[k]+":"+mapShow.get(mapShow.keys[k]);			
+			$(show).append("<span>"+kname+"</span>")
+		}
+		
+		postV(1)
 		
 	}
+	function postV(index){
 
+	var cateId=$("input[type=hidden]");		
+	var str=$("input[type=search]");
+	var valueID=new Array();
+	for(var j=0;j<map.size();j++){
+		valueID[j]=map.get(map.keys[j]);
+	}
+	
+	$.ajax({
+		data:{
+			cid:cateId.val(),
+			str:str.val(),
+			valueID:valueID,
+			index:index
+		},	
+		type:"post",
+		dataType:"json",
+		traditional:true,
+		url:"/extraday/goods/getSpuCom.do",
+		success:function(data){
+			
+			alert(1);
+			
+			
+			
+			
+			var pageSide=$(".page")
+			$(".page").html("")
+			
+			
+			
+			if(data["pageUtil"]["totalCount"]==0){
+				
+				$(".goods").html("<h1>您好，查不到您想要的商品</h1>");
+			}
+			
+			
+			if(data["pageUtil"]["totalCount"]!=0){	
+				
+				var page="";
+				if(data["pageUtil"]["index"]!=1){
+					var pageHead="<a href='javascript:void(0)' onclick='initDataBy(1)'>首页</a>";
+					var pageUp="<a href='javascript:void(0)' onclick='initDataBy("+(index-1)+")'>上一页</a>";
+				page+=pageHead;
+				page+=pageUp;
+				}
+			
+				for(var i=data["pageUtil"]["start"];i<=data["pageUtil"]["end"];i++){
+					var aPage="<a href='javascript:void(0)' onclick='initDataBy("+i+")'>"+i+"</a>"	
+					page+=aPage;	
+				}	
+				
+				if(data["pageUtil"]["index"]!=data["pageUtil"]["totalPage"]){
+					var pageDown="<a href='javascript:void(0)' onclick='initDataBy("+(index+1)+")'>下一页</a>";
+					var pageTail="<a href='javascript:void(0)' onclick='initDataBy("+data["totalPage"]+")'>末页</a>";
+				page+=pageDown;
+				page+=pageTail;
+				}		
+				$(pageSide).append(page);
+
+				}	
+			
+				$(".goods a:eq(0)").nextAll().remove();	
+			
+				$.each(data["pageUtil"]["list"],function(i,v){
+					if(i==0){
+					var cateId=$("input[type=hidden]");
+					$(cateId).val(v["f_category_id"]);						
+					}
+					
+					if(i>=1){
+						
+						var newData=$(".goods a:eq(0)").clone(true);
+			 			/* $(".show111 .middle-column-con").append(newData); */
+			 			newData.insertAfter($(".goods a")[i-1])
+					}
+					
+					
+					var jump=$(".goods a")[i]			
+					$(jump).attr('href',"/extraday/goodsDetail.jsp?spu_id="+v["f_id"])
+					var photo=$(".floor-item-img")[i]							
+					$(photo).attr('src',v["f_main_img_url"]);
+					var title=$(".floor-item-title")[i]
+					$(title).html("");
+					$(title).append(v["f_good_detail"]);
+					
+				})
+			
+			
+				var test=$(".row:eq(0)").nextAll().remove();
+			
+				var attrNo=0;
+				$.each(data["attrList"],function(i,v){
+				
+					if(attrNo>=1){
+						
+						var newData=$(".row:eq(0)").clone(true);
+			 			/* $(".show111 .middle-column-con").append(newData); */
+			 			newData.insertAfter($(".row")[attrNo-1])
+			 			
+					}
+					var attrName=$(".rowHead")[attrNo];
+					$(attrName).find("h4").html("")
+					$(attrName).find("h4").append(i);
+					var attrValue=$(".rowBody")[attrNo];
+					$(attrValue).html("")
+					
+					$.each(v,function(m,n){
+						
+						var ah="<a href='javascript:void(0)' onclick='postValue("+n["f_attr_id"]+","+n["f_value_id"]+",\""+n["f_attr_name"]+"\",\""+n["f_value_name"]+"\")'>"+n["f_value_name"]+"</a>"
+						
+						$(attrValue).append(ah);
+					})
+					
+					
+					
+					
+					attrNo++;	
+					
+					
+				})
+			
+			
+			
+			
+			
+			
+			
+		}
+	})
+	
+	}
 
 </script>
 
@@ -252,6 +402,7 @@
 	</head>
 	<body>
 		<header>
+		
 			<div class="h_top">
 				<div class="h_head">
 					<span>送至：南京</span>
@@ -359,6 +510,8 @@
 				
 			</div>
 		</section>
-		<footer></footer>
+		<footer>
+		<input type="hidden" value=${param.cid}>
+		</footer>
 	</body>
 </html>

@@ -124,7 +124,7 @@ public class GoodService {
 	}
 
 
-	public Map<String, Object> getAttrById(Integer cid, String string) {
+	public Map<String, Object> getAttrById(Integer cid, String string, List<Object> list2) {
 		
 		List<Map<String, Object>> list=spuAttrSaleDAO.getAttrBy(cid);
 		Map<String, Object> map=new HashMap<String, Object>();
@@ -132,7 +132,7 @@ public class GoodService {
 			Integer attrId=Integer.valueOf(list.get(i).get("f_attr_id").toString());
 			/*
 			List<Map<String, Object>> list2=spuAttrSaleDAO.getValueByCid(cid,attrId,string);*/
-			map.put(list.get(i).get("f_attr_name").toString(), spuAttrSaleDAO.getValueByCid(cid,attrId,string));
+			map.put(list.get(i).get("f_attr_name").toString(), spuAttrSaleDAO.getValueByCid(cid,attrId,string,list2));
 		}
 		
 		return map;
@@ -153,6 +153,34 @@ public class GoodService {
 		PageUtil pageUtil=new PageUtil(index, pageSize, count);
 		pageUtil.list=list;
 		return pageUtil;
+		
+	}
+
+	public PageUtil getSpuBase(Integer cid, String str, Object[] valueID, Integer index, Integer pageSize) {
+		List<Map<String, Object>> list=spudao.getSpuBase(cid,str);
+		List<Object> lists=new ArrayList<Object>();
+		for (int j = 0; j < list.size(); j++) {
+			lists.add(list.get(j).get("f_id"));
+		}
+		List<Map<String, Object>> listDo=new ArrayList<Map<String,Object>>();
+		for (int i = 0; i < valueID.length; i++) {
+			System.out.println(valueID[i]);
+			listDo=spudao.getBase(lists,valueID[i]);
+				lists.clear();
+				for (int j = 0; j < listDo.size(); j++) {
+					lists.add(listDo.get(j).get("f_id"));
+					System.out.println(lists.get(j));
+				}
+				
+		}
+		
+		
+		
+		Integer count=listDo.size();
+		PageUtil pageUtil=new PageUtil(index, pageSize, count);
+		pageUtil.list=listDo;
+		return pageUtil;
+		
 		
 	}
 	

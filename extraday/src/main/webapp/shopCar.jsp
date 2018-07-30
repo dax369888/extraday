@@ -323,7 +323,15 @@
 						</div>	
 				</div>
 		</div>
-
+		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~新加~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+		<div class="h_bottom">
+				<div class="h_bottom1 ">
+					<div class="logo">
+						<a href="index.jsp"><p><span>星期八 </span></a>购物车</p>
+					</div>								
+				</div>
+			</div>
+		
 		<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~网页中部~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 		<div class="section" id="contentSection">
 			<div class="section1">

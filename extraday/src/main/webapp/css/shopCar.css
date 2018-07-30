@@ -1,3 +1,5 @@
+
+
 *{
 	margin: 0;
 	padding: 0;
@@ -415,43 +417,38 @@ header:after{
 	background-color: white;
 	border: 1px solid #F2F2F2;
 } 
-   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~缃戦〉绗簩琛�*/
-.top_section{
-	margin: 0 auto;
-	height:60px;
-	line-height:60px;
-	background-color: #F10180;
-}
-.top_section h1{
-	font-family: "寰蒋闆呴粦";
-	color: white;
-	float: left;
-	margin-left: 80px;
-}
-.top_section h2{
-	padding-left:200px;
-}
-.top_section .search{
-	/*margin-top: 5px;*/
-	margin-top: -55px;
-	padding-right: 163px;
-}
-.top_section .search form{
-	font-size: 0px;
-}
-.top_section .search input{
-	height: 30px;
-}
-.top_section .search input[type=search]{
-	width: 300px;
-}
-.top_section .search input[type=submit]{
-	background-color: #F5F5F5;
-	font-size: 16px;
-	border-bottom:7px solid #F5F5F5;
+   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 新加 */
+
+.h_bottom{
+	width:100%;
 	background-color: white;
+	height: 55px;
+	margin-top: 10px;
+	border-bottom: 2px solid #f3168a;
 }
+.h_bottom1{
+	margin: 0 auto;
+	width: 1200px;
+	height: 100px;
+}
+.h_bottom .logo p{
+	color: gray;
+	font-size:15px ;
+	margin-left:10px;
+	margin-top:10px;
+}
+.h_bottom .logo span{
+	font-size: 40px;
+	font-family: arial;
+	color: #f10180;
+	width: ;
+	/*margin-left: 30px;*/	
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~缃戦〉涓儴~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.section{
+	margin-top:50px;
+}
 .section1{
 	height: 50px;
 	width: 1188px;

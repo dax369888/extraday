@@ -37,11 +37,11 @@
 						 		
 						 		
 						 		
-								var jump=$(".middle-column-con a")[i]			
+								var jump=$(".show111 .middle-column-con a")[i]			
 								$(jump).attr('href',"/extraday/goodsDetail.jsp?spu_id="+v["f_id"])
-								var photo=$(".floor-item-img")[i]							
+								var photo=$(".show111 .floor-item-img")[i]							
 								$(photo).attr('src',v["f_main_img_url"]);
-								var title=$(".floor-item-title")[i]
+								var title=$(".show111 .floor-item-title")[i]
 								$(title).html("");
 								$(title).append(v["f_good_detail"]);
 																						
@@ -169,16 +169,65 @@
 								<a class="hot-word">衬衫</a>
 								<a class="hot-word">牛仔裤</a>
 							</div>
-							<div class="show111">
+							<div>
 								<div class="big-banner-con">
 									<a href="#"><img src="img/index/girls1.jpg"></a>
 								</div>
 								<div class="middle-column-con">
-									<a class="grid one-grid-price" id="test">
+									<a class="grid one-grid-price " href="#">
 										<div class="floor-item-content-wrap">
-											<img class="floor-item-img" id="testImg" />
-											<div class="floor-item-title"></div>
+											<img class="floor-item-img" src="img/index/girls2.jpg" />
+											<div class="floor-item-title">夏装甜美休闲百搭显瘦V领条纹短袖</div>
 											<div class="floor-price">￥69</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls3.jpg" />
+											<div class="floor-item-title">2018夏季新款韩版女装夏装简约甜美通勤宽</div>
+											<div class="floor-price">￥68</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls4.jpg" />
+											<div class="floor-item-title">圆领腰部抽绳短袖女款连衣裙</div>
+											<div class="floor-price">￥169</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls5.jpg" />
+											<div class="floor-item-title">韩版女装夏装印花荷叶袖系带连衣裙</div>
+											<div class="floor-price">￥169</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls6.jpg" />
+											<div class="floor-item-title">简约休闲五分女款牛仔短裤</div>
+											<div class="floor-price">￥88</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls7.jpg" />
+											<div class="floor-item-title">2018夏季甜美风气质宽松显瘦中长款蕾丝半身裙</div>
+											<div class="floor-price">￥152</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls8.jpg" />
+											<div class="floor-item-title">韩版精致绣花毛边破洞女款牛仔短裤</div>
+											<div class="floor-price">￥118</div>
+										</div>
+									</a>
+									<a class="grid one-grid-price " href="#">
+										<div class="floor-item-content-wrap">
+											<img class="floor-item-img" src="img/index/girls9.jpg" />
+											<div class="floor-item-title">新款甜美修身高腰A字短裙时尚拼接纽扣半身裙牛仔女</div>
+											<div class="floor-price">￥79</div>
 										</div>
 									</a>
 								</div>
@@ -281,7 +330,7 @@
 									<a class="hot-word">生鲜果蔬</a>
 								
 								</div>
-								<div>
+								<div  class="show111">
 									<div class="big-banner-con">
 										<a href="#"><img src="img/index/foods1.jpg"></a>
 									</div>

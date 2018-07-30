@@ -183,6 +183,16 @@ public class GoodService {
 		
 		
 	}
+
+	public Integer delSku(Integer sku, Integer uid) {
+		return cartDAO.deleteItem(sku, uid);
+	}
+
+	public Integer updateCount(Integer uid, Integer sku, Integer num) {
+		
+		return cartDAO.updateCount(sku, uid, num);
+		
+	}
 	
 	
 	

@@ -10,6 +10,9 @@
 <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+	
+
+	
 	$(function() {
 
 
@@ -19,9 +22,13 @@
 		
 		
 	})
+	
+	
+	function isInteger(obj) {
+	 return Math.floor(obj) == obj
+	}
 	function initShopCar() {
 		var goodtitle;
-
 		var price = $(".price");
 		var count = $(".J_inputCount");
 		var totalMoney = $(".J_smallTotalPrice")
@@ -39,6 +46,8 @@
 					
 				}
 				else{
+					
+					$(".section31:eq(0)").nextAll().remove();
 				$.each(data, function(i, v) {
 
 					if (i >= 1) {
@@ -54,18 +63,31 @@
 					$(goodtitle).attr("onclick","getGoodsBySku("+v["f_sku_id"]+")");
 					price = $(".price")[i]
 					$(price).html("")
-					$(price).append("￥" + v["f_price"]);
+					$(price).text("￥" + v["f_price"]);
+					
+					minusC=$(".J_btnDelCount")[i];
+					$(minusC).attr("onclick","minusCount("+i+","+v["f_sku_id"]+")")
+					
+					minusC=$(".J_btnAddCount")[i];
+					$(minusC).attr("onclick","addCount("+i+","+v["f_sku_id"]+")")
+					
+					
 					count = $(".J_inputCount")[i];
 					$(count).attr('value', (v["f_count"]));
+					$(count).val(v["f_count"]);
+					$(count).attr('onblur','alterCount('+i+','+v["f_sku_id"]+')')
 					totalMoney = $(".J_smallTotalPrice")[i];
 					$(totalMoney).html("");
 					var moneyTT = parseInt(v["f_count"])
 							* parseFloat(v["f_price"]);
-					
+					$(totalMoney).html("")
 					$(totalMoney).append("￥" + moneyTT)
 					
 					sku_id=$("input[type=hidden]")[i];
 					$(sku_id).attr('value',v["f_sku_id"]);
+					
+					var del=$(".close")[i];
+					$(del).attr('onclick','delSku('+v["f_sku_id"]+')')
 					
 				})
 				
@@ -138,12 +160,7 @@
 		}
 		return sku;
 	}
-	
-	function alterMount(){
-		
-		
-	}
-	
+
 	
 	
 	function chooseAll(){
@@ -164,6 +181,106 @@
 			}
 		
 	}
+	
+	
+	function alterCount(i,sku){
+		
+		var i=i;		
+		count = $(".J_inputCount")[i];
+		num=$(count).val();
+
+		if(isInteger(num)){
+			alterCar(sku,num)
+			initShopCar();
+		}else{
+			
+			window.location="shopCar.jsp";	
+		}
+		
+	}
+	
+	function addCount(i,sku){
+		var i=i;		
+		count = $(".J_inputCount")[i];
+		num=$(count).val();
+		num++;
+		$(count).val(num);
+		alterCar(sku,num)
+		initShopCar();
+	}
+	
+	function minusCount(i,sku){
+		
+		var i=i;		
+		count = $(".J_inputCount")[i];
+		num=$(count).val();
+		num--;
+		$(count).val(num);
+		if(num<=0){
+			if(!delSku(sku)){
+				$(count).val(1)
+			}
+			
+		}else{
+			alterCar(sku,num)
+				
+		}
+		initShopCar();
+		
+		
+	}
+	
+	
+	function delSku(sku){
+		if(confirm("是否删除？")){
+			$.ajax({
+				type:"post",
+				data:{
+					sku:sku
+				},
+				dataType:"json",
+				url:"/extraday/goods/delSku.do",
+				success:function(data){
+					
+					initShopCar();
+					return true;
+				}
+				
+				
+				
+			})
+			
+			
+		}
+	}
+	
+	
+	function alterCar(sku_id,num){
+		 var sku_id=sku_id;
+		 var num=num;
+	
+		$.ajax({
+			data:{
+				sku:sku_id,
+				num:num
+			},
+			type:"post",
+			dataType:"json",
+			url:"/extraday/goods/alterCar.do",
+			success:function(data){
+				
+			}
+			
+			
+			
+		})		
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	
@@ -272,12 +389,17 @@
 								<div class="clear">
 									<div class="section3_2_6_2 plush">
 										<input class="J_btnDelCount" type="button" name="minus"
-											value="-" onclick="alterMount"> 
+											value="-"> 
 											<input class="J_inputCount" type="text"
-											name="amount" value="1" onblur="alterMount()"> 
-											<input class="J_btnAddCount" onclick="alterMount()"
+											name="amount" value="1"> 
+											<input class="J_btnAddCount" 
 											type="button" name="plus" value="+">
 									</div>
+									
+									
+									<script></script>
+									
+									
 									<!--<div class="section3_2_6_2 plush">
 										<span class="J_btnDelCount">-</span>
 										<input class="J_inputCount" type="text" value="1" />

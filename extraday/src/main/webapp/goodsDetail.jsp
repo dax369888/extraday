@@ -434,7 +434,7 @@
 				function isInteger(obj) {
 					 return Math.floor(obj) == obj
 					}
-				<!-- 
+		
 				function changeCount(){						
 						var count=$("#getCount");
 						if(count.val()<=0){
@@ -484,7 +484,6 @@
 				
 				
 				</script>
- -->
 
 
 

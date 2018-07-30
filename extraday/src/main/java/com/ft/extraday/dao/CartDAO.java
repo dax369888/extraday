@@ -52,14 +52,21 @@ public class CartDAO extends BaseDAO<Cart>{
 		return super.queryList(sql, objects);
 	}
 
-	public void deleteItem(Integer sku_id, Integer user_id) {
+	public Integer deleteItem(Integer sku_id, Integer user_id) {
 		
 		String sql="delete from t_cart where f_sku_id=? and f_user_id=?";
 		Object[] objects=new Object[] {sku_id,user_id};
-		super.update(sql, objects);
+		return super.update(sql, objects);
 		
 		
 	}
+
+	public Integer updateCount(Integer sku, Integer uid, Integer num) {
+		String sql="update t_cart set f_count=? where f_sku_id=? and f_user_id=?";
+		Object[] objects=new Object[] {num,sku,uid};
+		return super.update(sql, objects);
+	}
+
 	
 	
 }

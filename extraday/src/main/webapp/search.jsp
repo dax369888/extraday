@@ -245,7 +245,7 @@
 	function postValue(attrId,valueId,attrName,valueName){
 		map.put(attrId,valueId);
 		mapShow.put(attrName,valueName);
-		alert(map);
+		
 		//前台显示Mapshow
 		var show=$(".nav-classify");
 		$(show).find("span:eq(0)").nextAll().remove();
@@ -281,7 +281,7 @@
 		url:"/extraday/goods/getSpuCom.do",
 		success:function(data){
 			
-			alert(1);
+			
 			
 			
 			

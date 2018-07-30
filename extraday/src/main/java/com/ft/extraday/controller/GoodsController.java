@@ -1,6 +1,7 @@
 package com.ft.extraday.controller;
 
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -178,4 +179,23 @@ public class GoodsController {
 		
 		
 	}
+	
+	public void delSku(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+		request.setCharacterEncoding("UTF-8");
+		Integer sku=Integer.valueOf(request.getParameter("sku"));
+		Integer uid=((Users)(request.getSession().getAttribute("user"))).getF_user_id();
+		Integer result=goodService.delSku(sku,uid);
+		
+		response.getWriter().write(JSON.toJSONString(result));
+	}
+	
+	public void alterCar(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+		
+		Integer sku=Integer.valueOf(request.getParameter("sku"));
+		Integer num=Integer.valueOf(request.getParameter("num"));
+		Integer uid=((Users)(request.getSession().getAttribute("user"))).getF_user_id();
+		Integer result=goodService.updateCount(uid,sku,num);
+		
+	}
+	
 }

@@ -37,7 +37,7 @@ public class OrderDAO extends BaseDAO<Order>{
 			sql+=" and f_order_status=?";
 			size++;
 		}
-		sql+=" limit "+(index-1)*pageSize+","+pageSize+" order by t_order.f_order_id";
+		sql+=" limit "+(index-1)*pageSize+","+pageSize;
 		Object[] objects=new Object[size];
 		objects[0]=uid;
 		if (ostatus!=-1) {

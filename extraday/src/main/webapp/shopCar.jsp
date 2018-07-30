@@ -212,7 +212,7 @@
 			<div class="section1">
 				<div class="section1_fl fl">
 					<ul>
-						<li><a href="#">全部商品<span class="num"></span></a></li>|
+						<li><a href="#">全部商品<span class="num"></span></a></li>
 
 					</ul>
 				</div>

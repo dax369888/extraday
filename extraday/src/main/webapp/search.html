@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>搜索页面</title>
+		<link rel="stylesheet" href="css/search.css" />
+		
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	
+		initDataBy()
+	})
+
+	function initDataBy(){
+		alert(1)
+		var searchStr="${param.searchStr}";
+		$.ajax({
+			type:"post",
+			data:{
+				search:searchStr
+			},
+			dataType:"json",
+			url:"/extraday/goods/searchByStr.do",
+			success:function(data){
+				
+				alert(data)
+				
+			}
+					
+		})
+		
+	}
+	
+	
+
+
+</script>
+
+
+		
+		
+		
+	</head>
+	<body>
+		<header>
+			<div class="h_top">
+				<div class="h_head">
+					<span>送至：南京</span>
+						<div class="h_top_r fr">	
+							<ul>
+								<li><span class="h_1">欢迎，请     </span><a href="#" class="active">登陆</a></li>
+								<li><a href="#">免费注册</a></li>
+								<li><a href="#">我的订单</a></li>
+                                <li class="coll_bg">
+									<a href="#">我的特卖</a>
+									<div class="coll_list">
+										<ul>
+											<li>收藏宝贝</li>
+											<li>我的足迹</li>
+										</ul>
+									</div>								
+								</li>
+                               						
+								<li><a href="#">联系客服</a></li>|														
+								<li><a href="#">购物车</a></li>
+							</ul>
+						</div>	
+				</div>	  		
+			</div>	
+			<div class="h_bottom">
+				<div class="h_bottom1 ">
+					<div class="logo">
+						<p><span>星期八</span>   Extra day</p>
+					</div>
+					
+					<div class="search">
+						<form>
+							<span>宝贝</span>
+							<input type="search" placeholder="请输入想要的宝贝" />
+							<input type="submit" value="搜索" />
+						</form>				
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<section>
+			<div class="main">
+				<div class="main-total">
+					<div class="main-nav">
+						<div class="nav-classify">
+							<span class="classify-text">所有分类</span>
+							<a class="classify-show">显示筛选</a>						
+						</div>
+						<div class="nav-detail">
+							<div class="group">
+								<div id="hot" class="row">
+									<div class="head">
+										<h4>
+											<span class="head-title">选购热点：</span>
+										</h4>										
+									</div>
+									<div class="body">									
+										<a href="#">修身显瘦</a>
+										<a href="#">气质淑女</a>
+										<a href="#">复古风</a>
+										<a href="#">甜美</a>
+										<a href="#">小露香肩</a>
+										<a href="#">可爱</a>
+										<a href="#">田园小清新</a>
+										<a href="#">复古风</a>
+										<a href="#">甜美</a>
+										<a href="#">小露香肩</a>
+									</div>
+									<div class="foot">
+										<span class="switch">多选</span>
+									</div>
+								</div>
+								<div id="style" class="row">
+									<div class="head">
+										<h4>
+											<span class="head-title">选购热点：</span>
+										</h4>										
+									</div>
+									<div class="body">									
+										<a href="#">系带</a>
+										<a href="#">绑带</a>
+										<a href="#">蝴蝶结</a>
+										<a href="#">流苏</a>
+										<a href="#">褶皱</a>
+										<a href="#">印花</a>
+										<a href="#">口袋</a>
+										<a href="#">抽褶</a>										
+									</div>
+									<div class="foot">
+										<span class="switch">多选</span>
+									</div>
+								</div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+						<div class="goods">
+							<a class="goods-show" href="#">
+								<div class="goods-content">
+									<img class="floor-item-img" src="img/index/girls2.jpg" />
+									<div class="floor-item-title">夏装甜美休闲百搭显瘦V领条纹短袖</div>
+									<div class="floor-price">￥69</div>
+								</div>
+							</a>
+							<a class="goods-show" href="#">
+								<div class="goods-content">
+									<img class="floor-item-img" src="img/index/girls2.jpg" />
+									<div class="floor-item-title">夏装甜美休闲百搭显瘦V领条纹短袖</div>
+									<div class="floor-price">￥69</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div>
+				
+			</div>
+		</section>
+		<footer></footer>
+	</body>
+</html>

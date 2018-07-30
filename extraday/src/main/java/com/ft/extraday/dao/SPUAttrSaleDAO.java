@@ -33,5 +33,28 @@ public class SPUAttrSaleDAO extends BaseDAO<SPUSaleAttr>{
 		
 		
 	}
+	public List<Map<String, Object>> getAttrBy(Integer cid) {
+		
+		String sql="select t_c_att.f_attr_id,f_attr_name,f_category_id FROM t_c_att,t_attribute WHERE t_c_att.f_attr_id=t_attribute.f_attr_id and t_c_att.f_category_id=?";
+		Object[] objects=new Object[] {cid};
+		return super.queryList(sql, objects);
+		
+		
+	}
+	public List<Map<String, Object>> getValueByCid(Integer cid, Integer attrId, String string) {
+		String sql="select DISTINCT t_attribute.*,t_vaule.f_value_name,t_vaule.f_value_id FROM t_c_att,t_spu,t_spu_val,t_vaule,t_attribute,t_sku,t_sku_val" 
+				+" WHERE t_c_att.f_category_id=? AND t_c_att.f_attr_id=?"
+				+" AND t_c_att.f_category_id=t_spu.f_category_id"
+				+" AND t_vaule.f_attr_id=t_c_att.f_attr_id"
+				+" AND t_vaule.f_attr_id=t_attribute.f_attr_id"
+				+" AND ((t_spu.f_id=t_spu_val.f_spu_id"
+				+" and t_spu_val.f_value_id=t_vaule.f_value_id)"
+				+" OR (t_spu.f_id=t_sku.f_spu_id"
+				+" AND t_sku.f_sku_id=t_sku_val.f_sku_id"
+				+" AND t_sku_val.f_value_id=t_vaule.f_value_id))"
+				+" and (f_good_detail LIKE CONCAT('%',?,'%') OR f_sku_name LIKE CONCAT('%',?,'%'))";
+		Object[] objects=new Object[] {cid,attrId,string,string};
+		return super.queryList(sql, objects);
+	}
 	
 }

@@ -18,6 +18,7 @@ import com.ft.extraday.entity.SKU;
 import com.ft.extraday.entity.SKUAttr;
 import com.ft.extraday.entity.SPUImg;
 import com.ft.extraday.entity.Spu;
+import com.ft.extraday.util.PageUtil;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 public class GoodService {
@@ -120,6 +121,39 @@ public class GoodService {
 		SKU sku	=skudao.selectById(sku_id);
 		Integer spu_id=sku.getF_spu_id();
 		return spu_id;
+	}
+
+
+	public Map<String, Object> getAttrById(Integer cid, String string) {
+		
+		List<Map<String, Object>> list=spuAttrSaleDAO.getAttrBy(cid);
+		Map<String, Object> map=new HashMap<String, Object>();
+		for (int i = 0; i < list.size(); i++) {
+			Integer attrId=Integer.valueOf(list.get(i).get("f_attr_id").toString());
+			/*
+			List<Map<String, Object>> list2=spuAttrSaleDAO.getValueByCid(cid,attrId,string);*/
+			map.put(list.get(i).get("f_attr_name").toString(), spuAttrSaleDAO.getValueByCid(cid,attrId,string));
+		}
+		
+		return map;
+	}
+
+	public PageUtil getSpuByString(String string, Integer index, Integer pageSize) {
+		List<Map<String, Object>> list=spudao.getSpuByString(string,index,pageSize);
+		
+		Integer count=spudao.getSpuByStringCount(string);
+		PageUtil pageUtil=new PageUtil(index, pageSize, count);
+		pageUtil.list=list;
+		return pageUtil;
+		
+	}
+	public PageUtil getSpuByCid(Integer cid, Integer index,Integer pageSize) {
+		List<Map<String, Object>> list=spudao.getSpuByCid(cid,index,pageSize);
+		Integer count=spudao.getSpuByCidCount(cid);
+		PageUtil pageUtil=new PageUtil(index, pageSize, count);
+		pageUtil.list=list;
+		return pageUtil;
+		
 	}
 	
 	

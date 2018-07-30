@@ -16,7 +16,11 @@ public class SKUValueDAO extends BaseDAO<SKUAttr>{
 		
 		for (int i = 0; i < skus.length; i++) {
 			if (i==skus.length-1) {
-				sql+=" AND t_sku_val.f_sku_id IN (select f_sku_id FROM t_sku_val where f_value_id=?))";				
+				if (skus.length-1==0) {
+					sql+=" AND t_sku_val.f_sku_id IN (select f_sku_id FROM t_sku_val where f_value_id=?)";
+				}else {
+					sql+=" AND t_sku_val.f_sku_id IN (select f_sku_id FROM t_sku_val where f_value_id=?))";									
+				}
 			}
 			else {
 				sql+=" AND t_sku_val.f_sku_id IN (select f_sku_id FROM t_sku_val where f_value_id=?";

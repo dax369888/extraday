@@ -14,11 +14,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
+import com.alipay.api.domain.Category;
 import com.ft.extraday.entity.SKU;
 import com.ft.extraday.entity.SPUImg;
 import com.ft.extraday.entity.Spu;
 import com.ft.extraday.entity.Users;
 import com.ft.extraday.service.GoodService;
+import com.ft.extraday.util.PageUtil;
 
 public class GoodsController {
 	
@@ -111,7 +113,40 @@ public class GoodsController {
 	
 	}
 	
+
 	
-	
+	public void searchByStr(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+		request.setCharacterEncoding("UTF-8");
+		Map<String, Object> map=new HashMap<String, Object>();
+		//接收搜索的字符串
+		String string=request.getParameter("search");
+		Integer index=Integer.valueOf(request.getParameter("index"));
+		String cidStr=request.getParameter("cid");
+		System.out.println(string);
+		
+		PageUtil pageUtil;
+		Integer cid=null;
+		if (cidStr=="") {
+			pageUtil=goodService.getSpuByString(string,index,5);
+			cid=Integer.valueOf(pageUtil.list.get(0).get("f_category_id").toString());			
+		}else {
+			cid=Integer.valueOf(cidStr);
+			pageUtil=goodService.getSpuByCid(cid,index,5);
+		}
+		System.out.println(cid);
+		Map<String, Object> attrList=goodService.getAttrById(cid,string);
+		
+		map.put("attrList", attrList);
+		
+		map.put("pageUtil", pageUtil);
+		//得到物品的种类
+	/*	Integer cid=Integer.valueOf(pageUtil.list.get(0).get("f_category_id").toString());
+		System.out.println(cid);
+		*/
+		
+		System.out.println(JSON.toJSONString(map));
+		response.getWriter().write(JSON.toJSONString(map));
+		
+	}
 	
 }

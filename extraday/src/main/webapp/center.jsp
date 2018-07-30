@@ -306,7 +306,7 @@
 											
 											$.each(v["list"],function(index,sku){
 											
-												var td="<span>"+sku["f_sku_name"]+"</span>*<span>"+sku["f_good_count"]+"<span><br>"
+												var td="<a href='javascript:void(0)' onclick='getGoodsBySku("+sku["f_sku_id"]+")'><span>"+sku["f_sku_name"]+"</span>*<span>"+sku["f_good_count"]+"<span></a><br>"
 												var good=$(tbody).find(".goods").eq(i);
 												$(good).append(td)	
 												
@@ -349,6 +349,29 @@
 
 				})
 	}
+	
+	
+	function getGoodsBySku(i){
+		alert(i)
+		$.ajax({
+			data:{
+				sku_id:i
+			},
+			dataType:"json",
+			type:"post",
+			url:"/extraday/goods/getGoodsBySku.do",
+			success:function(data){
+				alert(data);
+				window.location.href="goodsDetail.jsp?spu_id="+data;
+			}
+			
+			
+			
+		})
+		
+		
+	}
+	
 </script>
 
 </head>
@@ -638,7 +661,7 @@
 										<li><a href="javascript:void(0)" onclick="initOrder(-1,1)">全部订单</a></li>
 										<li><a href="javascript:void(0)" onclick="initOrder(1,1)">待付款</a></li>
 										<li><a href="javascript:void(0)" onclick="initOrder(2,1)">待收货</a></li>
-										<li><a href="javascript:void(0)" onclick="initOrder(3,1)">待评价</a></li>
+									<!-- 	<li><a href="javascript:void(0)" onclick="initOrder(3,1)">待评价</a></li> -->
 									</ul>
 									<!-- <div class="search">
 								<input id="ip_keyword" type="text" class="itxt" value="商品名称/商品编号/订单号">

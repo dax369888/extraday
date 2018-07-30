@@ -350,12 +350,12 @@
 				<div class="logo">
 					<a href="index.jsp"><span>星期八 </span> My Day</a>
 				</div>
-				<div class="search fr">
+				<!-- <div class="search fr">
 					<form>
 						<input type="search" placeholder="请输入心仪宝贝" /> <input
 							type="submit" value="搜索" />
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</header>

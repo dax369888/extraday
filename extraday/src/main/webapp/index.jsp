@@ -100,16 +100,16 @@
 					</div>
 					
 					<div class="search">
-						<form>
+						<form  action="search.jsp" method="post">
 							<span>宝贝</span>
-							<input type="search" placeholder="请输入想要的宝贝" />
+							<input type="search" placeholder="请输入..." name="searchStr" required="required"/>
 							<input type="submit" value="搜宝贝" />
 						</form>
 						<ul>
-							<li><a href="#">女装</a></li>
-							<li><a href="#">美食</a></li>
-							<li><a href="#">书籍</a></li>
-							<li><a href="#">裤装</a></li>
+							<li><a href="search.jsp?cid=1">女装</a></li>
+							<li><a href="search.jsp?cid=2">美食</a></li>
+							<li><a href="search.jsp?cid=3">书籍</a></li>
+						
 						</ul>
 					</div>
 				</div>
@@ -119,9 +119,9 @@
 				<div class="head-inner">
 					<ul class="main-nav-link">
 						<li><a class="first-page">首页</a></li>
-						<li><a href="#">女装</a></li>
-						<li><a href="#">书籍</a></li>
-						<li><a href="#">美食</a></li>
+						<li><a href="search.jsp?cid=1">女装</a></li>
+						<li><a href="search.jsp?cid=2">书籍</a></li>
+						<li><a href="search.jsp?cid=3">美食</a></li>
 					</ul>				
 				</div>			
 			</div>		
@@ -131,9 +131,9 @@
 				<p>
 						
 						<a href="">导航</a>
-						<a href="#floor1">女装</a>
-						<a href="#floor2">书籍</a>			
-						<a href="#floor3">美食</a>
+						<a href="search.jsp?cid=1">女装</a>
+						<a href="search.jsp?cid=2">书籍</a>			
+						<a href="search.jsp?cid=13">美食</a>
 				</p>
 			</div>
 			<div id="content" class="index-content" >
